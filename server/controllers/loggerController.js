@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-let data;
-
 const loggerController = {};
 
 // middleware to get all type of logs
@@ -24,7 +22,7 @@ loggerController.getLogs = async (req, res, next) => {
 };
 
 // middleware to add client and server console log to files
-loggerController.addLogs = (req, res, next) => {
+loggerController.addLogs = async (req, res, next) => {
   // assign incoming req.body to logs variable
   const logs = req.body;
 
@@ -36,13 +34,8 @@ loggerController.addLogs = (req, res, next) => {
     });
   }
 
-  // error handling just in case json file reset
-  try {
-    // eslint-disable-next-line global-require
-    data = require('../data/allLogs.json');
-  } catch (e) {
-    data = [];
-  }
+  // read existing logs from allLogs.json
+  const data = await JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/allLogs.json'), 'utf8'));
 
   // check if incoming logs are in array format
   if (Array.isArray(logs)) {

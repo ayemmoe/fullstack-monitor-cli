@@ -2,6 +2,7 @@ const express = require('express');
 const { io } = require('../../config');
 
 const loggerController = require('../controllers/loggerController');
+const fileController = require('../controllers/fileController');
 
 const router = express.Router();
 
@@ -17,7 +18,9 @@ router.get('/logs',
 
 // route to post all types of logs: client, sever, requests
 router.post('/logs/:type',
-  loggerController.checkLogFile,
+  fileController.getFileSize,
+  fileController.splitFile,
+  fileController.resetFile,
   loggerController.addLogs,
   loggerController.getLogs,
   webSocketMiddleware,
