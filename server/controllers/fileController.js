@@ -56,4 +56,15 @@ fileController.resetFile = (req, res, next) => {
   return next();
 };
 
+fileController.deleteOldLogs = (req, res, next) => {
+  for (let i = headFile; i < fileTracker; i++) {
+    try {
+      fs.unlinkSync(path.resolve(__dirname, `../data/allLogs${i}.json`));
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  return next();
+};
+
 module.exports = fileController;
