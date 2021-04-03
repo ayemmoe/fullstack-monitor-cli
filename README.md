@@ -25,7 +25,8 @@ sudo fullstack-monitor-cli
     -slb, --start-listen-both                 Start the server and listen in the terminal and chrome browser
   
   
-  For more infomation view the project repo here: https://github.com/PFA-Pink-Fairy-Armadillo/fullstack-monitor-cli
+  For more infomation view the project repo here:
+  https://github.com/PFA-Pink-Fairy-Armadillo/fullstack-monitor-cli
   ```
   
   ## Tutorial
