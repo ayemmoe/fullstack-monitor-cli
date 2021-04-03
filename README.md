@@ -51,3 +51,6 @@ sudo fullstack-monitor-cli
       OR
     $ fullstack-monitor-cli -sl
   ```
+  
+  ## Example Logs
+  - Attach img file here!
